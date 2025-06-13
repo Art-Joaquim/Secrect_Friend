@@ -68,7 +68,9 @@ function embaralha(lista){
 window.onload = function() {
     document.getElementById("nome-amigo").addEventListener("keyup", function(event) {
         if (event.key === "Enter") {
+            event.preventDefault();
             adicionar();
         }
     });
+
 }
