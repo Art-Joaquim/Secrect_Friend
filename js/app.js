@@ -1,4 +1,5 @@
 let amigos = [];
+let amigosSorteio = amigos;
 
 function adicionar(){
     let amigo = document.getElementById("nome-amigo").value.trim();
@@ -23,15 +24,21 @@ function adicionar(){
 }
 
 function sortear(){
-    embaralha(amigos);
+
+    if(amigosSorteio.length < 3) {
+        alert("informe pelo menos 3 amigos.");
+        return;
+    }
+
+    embaralha(amigosSorteio);
     document.getElementById("lista-sorteio").textContent = "";
     let sorteio = document.getElementById("lista-sorteio");
     
-    for(let i=0; i < amigos.length; i++){
-        if(i == amigos.length-1){
-            sorteio.innerHTML = sorteio.innerHTML + amigos[i] + "->" + amigos[0] + "<br>";
+    for(let i=0; i < amigosSorteio.length; i++){
+        if(i == amigosSorteio.length-1){
+            sorteio.innerHTML = sorteio.innerHTML + amigosSorteio[i] + "->" + amigosSorteio[0] + "<br>";
         }else{
-            sorteio.innerHTML = sorteio.innerHTML + amigos[i] + "->" + amigos[i+1] + "<br>";
+            sorteio.innerHTML = sorteio.innerHTML + amigosSorteio[i] + "->" + amigosSorteio[i+1] + "<br>";
         }
     }
 
@@ -39,6 +46,7 @@ function sortear(){
 
 function reiniciar(){
     amigos = [];
+    amigosSorteio = amigos;
     document.getElementById("nome-amigo").value = "";
     document.getElementById("lista-amigos").textContent = "";
     document.getElementById("lista-sorteio").textContent = "";
